@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesión</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f6fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 480px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        .form-group {
+            margin-bottom: 22px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+            font-size: 15px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dcdde1;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 15px;
+            color: #2f3640;
+            text-align: center;
+            background-color: #fcfcfc;
+        }
+        input:focus {
+            border-color: #007bff;
+            outline: none;
+            background-color: #fff;
+        }
+        .btn-submit {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: background-color 0.2s;
+        }
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+        .mensaje-alerta {
+            margin-top: 25px;
+            text-align: left;
+            font-size: 15px;
+            padding: 12px;
+            border-radius: 4px;
+        }
+        /* Cambia de color del texto dependiendo de si es correcto o incorrecto */
+        .exito {
+            color: #27ae60;
+            background-color: #e8f8f5;
+            border-left: 4px solid #2cc990;
+        }
+        .error {
+            color: #c0392b;
+            background-color: #f9ebea;
+            border-left: 4px solid #e74c3c;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Inicio de sesión</h2>
+
+        <form action="/ejercicio2" method="POST">
+            <div class="form-group">
+                <label>Ingresa tu nombre</label>
+                <input type="text" name="usuario" required autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label>Ingresa tu contraseña</label>
+                <input type="password" name="contrasena" required>
+            </div>
+
+            <button type="submit" class="btn-submit">Verificar</button>
+        </form>
+
+        {% if mensaje %}
+            <div class="mensaje-alerta {% if es_valido %}exito{% else %}error{% endif %}">
+                {{ mensaje }}
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
